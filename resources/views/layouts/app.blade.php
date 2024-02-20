@@ -41,6 +41,15 @@
       @apply font-medium text-slate-500;
     }
 
+    .btn {
+      @apply rounded-md px-2 py-1 text-center font-medium text-slate-700 shadow-sm ring-1 ring-slate-700/10 hover:bg-slate-50
+    }
+
+    input, 
+    textarea {
+      @apply shadow-sm appearance-none border w-full py-2 px-3 text-slate-700 leading-tight focus:outline-none
+    }
+
   </style>
   {{-- blade-formatter-enable --}}
 
