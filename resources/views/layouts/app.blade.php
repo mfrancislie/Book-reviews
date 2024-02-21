@@ -45,9 +45,21 @@
       @apply rounded-md px-2 py-1 text-center font-medium text-slate-700 shadow-sm ring-1 ring-slate-700/10 hover:bg-slate-50
     }
 
-    input, 
-    textarea {
-      @apply shadow-sm appearance-none border w-full py-2 px-3 text-slate-700 leading-tight focus:outline-none
+    .input, 
+    .textarea {
+      @apply rounded-md shadow-sm appearance-none border w-full py-2 px-3 text-slate-700 leading-tight focus:outline-none
+    }
+
+    .filter-container {
+      @apply mb-4 flex space-x-2 rounded-md bg-slate-200 p-2;
+    }
+
+    .filter-item {
+      @apply flex w-full items-center justify-center rounded-md px-4 py-2 text-center text-sm font-medium text-slate-500;
+    }
+
+    .filter-item-active {
+      @apply bg-slate-500 shadow-sm flex w-full items-center justify-center rounded-md px-4 py-2 text-center text-cyan-50 text-sm font-medium;
     }
 
   </style>
@@ -55,7 +67,7 @@
 
   
 </head>
-<body class="container mx-auto mt-10 mb-10 max-w-lg">     
+<body class="container mx-auto mt-10 mb-10 w-[70%]">     
     <h1 class="mb-4 text-2xl">@yield('title')</h1>
 
         @yield('content')
