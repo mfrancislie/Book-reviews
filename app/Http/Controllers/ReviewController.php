@@ -8,6 +8,10 @@ use App\Models\Book;
 
 class ReviewController extends Controller
 {
+    //limit for reviews
+    public function _construct(){
+        $this->middleware('throttle:review')->only(['store']);
+    }
     /**
      * Display a listing of the resource.
      */

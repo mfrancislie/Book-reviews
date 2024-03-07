@@ -36,5 +36,10 @@ class RouteServiceProvider extends ServiceProvider
             Route::middleware('web')
                 ->group(base_path('routes/web.php'));
         });
+
+       // limiting reviews three perHour 
+        RateLimiter::for ('reviews', function (Request $request) {
+            return Limit::perHour(3)->by($request->user()?->id ?: $request->ip());
+        });
     }
 }
