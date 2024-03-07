@@ -31,12 +31,12 @@ class BookController extends Controller
       $cacheKey = 'books:' . $filter . ':' .  $title;
 
        $books = 
-        // cache()->remember(
-        // $cacheKey, 
-        // 3600, 
-        // fn() => 
-        $books->paginate(10);
-       // );
+        cache()->remember(
+        $cacheKey, 
+        3600, 
+        fn() => 
+        $books->paginate(10)
+       );
      
       /*
         for testing cache 
@@ -71,19 +71,19 @@ class BookController extends Controller
      */
     public function show(int $id)
     {
-
         $cacheKey = 'book:' . $id;
-
-        
-        $book = cache()->remember(
-            $cacheKey, 
-            3600, 
-            fn() => Book::with([
-            'review' => fn($query) => $query->latest()
-        ]))->withReviewsCount()->withAvgRating()->findOrFail($id);
-
-        return  view('books.show', ['book' => $book]);
+    
+        $book = cache()->remember($cacheKey, 3600, fn() =>
+            Book::with([
+                'review' => function ($query) {
+                    return $query->latest();
+                }
+            ])->withReviewsCount()->withAvgRating()->findOrFail($id)
+        );
+    
+        return view('books.show', compact('book'));
     }
+    
 
     /**
      * Show the form for editing the specified resource.

@@ -40,7 +40,8 @@
           </div>
           <div>
             <div class="book-rating">
-              {{ number_format($book->review_avg_rating, 1) }}
+              {{-- {{ number_format($book->review_avg_rating, 1) }} --}}
+              <x-star-rating :rating="$book->review_avg_rating"/>
             </div>
             <div class="book-review-count">
               out of {{ $book->review_count }} {{ Str::plural('review', $book->review_count) }}
